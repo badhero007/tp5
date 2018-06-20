@@ -1,0 +1,81 @@
+
+    {include file="../../../public/static/template/top" /}
+
+    {include file="../../../public/static/template/left" /}
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Home
+                <small>领取报表</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">领取报表</li>
+            </ol>
+        </section>
+        <div class="box-body">
+            <form class="form-inline" action="<?php echo url('/reward/reward/index') ?>" method="post" >
+                <div class="form-group">
+                    <label for="exampleInputName2">奖励ID</label>
+                    <input type="text" name="rid" class="form-control" id="rid" placeholder="奖励ID" value="<?php echo $rid ?>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail2">用户ID</label>
+                    <input type="text" name="uid" class="form-control" id="uid" placeholder="用户ID" value="<?php echo $uid ?>">
+                </div>
+                <button type="submit" class="btn btn-info">搜索</button>
+                <button type="submit" name="export" value="export" class="btn btn-danger">导出</button>
+            </form>
+        </div>
+        <div class="box-body">
+
+
+
+
+            <table  id="table1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>用户</th>
+                    <th>领取积分</th>
+                    <th>奖励id</th>
+                </tr>
+                </thead>
+                <tbody id="table_body">
+                <?php foreach ($records as $key => $record): ?>
+                    <tr>
+                        <td><?php echo $record['time'] ?></td>
+                        <td><?php echo $record['user'] ?></td>
+                        <td><?php echo $record['points'] ?></td>
+                        <td><?php echo $record['rid'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+            <div id="result"></div>
+
+            <!-- /.box-body -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="<?php echo url('/reward/reward/index',['page'=>($nowpage-1) > 0 ? $nowpage-1 : 1],false) ?>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <?php for ($i = 1; $i <= $pages; $i++): ?>
+                        <li><a href="<?php echo url('/reward/reward/index',['page'=>$i],false)  ?>"><?php echo $i ?></a></li>
+                    <?php endfor; ?>
+                    <li>
+                        <a href="<?php echo url('/reward/reward/index',['page'=>($nowpage+1) < $pages ? $nowpage + 1 : $pages],false) ?>" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    {include file="../../../public/static/template/footer" /}

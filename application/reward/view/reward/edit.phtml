@@ -1,0 +1,85 @@
+
+{include file="../../../public/static/template/top" /}
+
+{include file="../../../public/static/template/left" /}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Home
+            <small>领取报表</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">创建奖励</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="box box-default">
+
+            <div class="box-header with-border">
+                <h3 class="box-title">Select2</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+
+                <form action="<?php echo url('/reward/reward/editReward') ?>" method="post">
+                    <input type="hidden" name="rid" value="<?php echo $reward['id'] ?>">
+                    <div class="row">
+                        <div class='col-sm-6'>
+                            <div class="form-group">
+                                <label>生效时间：</label>
+                                <!--指定 date标记-->
+                                <div class='input-group date' id='start'>
+                                    <input type='text' class="form-control" name="date_start" value="<?php echo $reward['date_start'] ?>" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-sm-6'>
+                            <div class="form-group">
+                                <label>失效时间：</label>
+                                <!--指定 date标记-->
+                                <div class='input-group date' id='end'>
+                                    <input type='text' class="form-control" name="date_end" value="<?php echo $reward['date_end'] ?>"/>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-info">保存</button>
+                </form>
+            </div>
+            <div class="box-footer">
+                Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
+                the plugin.
+            </div>
+        </div>
+    </section>
+
+</div>
+
+{include file="../../../public/static/template/footer" /}
+
+<script>
+    $(function () {
+        $('#start').datetimepicker({
+            format:'yy-mm-dd HH:ii:ss',
+            language:'zh-CN',
+        })
+
+        $('#end').datetimepicker({
+            format:'yy-mm-dd HH:ii:ss',
+            language:'zh-CN',
+        })
+    })
+</script>
