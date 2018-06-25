@@ -22,6 +22,7 @@
         "phpoffice/phpexcel":"dev-develop",
         "php-amqplib/php-amqplib":"^2.6.1"
     },
+
     "extra": {
         "think-path": "thinkphp"
     },
