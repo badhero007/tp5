@@ -65,6 +65,9 @@ class swooleServer
         $this->sw_config = $sw_config;
     }
 
+    /**
+     * 启动服务
+     */
     public function start()
     {
         $serv = new \swoole_server($this->host,$this->port);
@@ -102,6 +105,9 @@ class swooleServer
 
     }
 
+    /**
+     * 停止运行
+     */
     public function stop(){
         if(file_exists(self::$sw_master_pid_file)){
 
@@ -123,6 +129,9 @@ class swooleServer
 
     }
 
+    /**
+     * 重新加载
+     */
     public function reload(){
         if(file_exists(self::$sw_manager_pid_file)){
             $manager_pid = file_get_contents(self::$sw_manager_pid_file);
@@ -135,6 +144,10 @@ class swooleServer
         }
     }
 
+    /**
+     * 启动服务
+     * @param $server
+     */
     public function onStart($server){
         file_put_contents(self::$sw_master_pid_file, $server->master_pid,LOCK_EX);
 
@@ -156,6 +169,11 @@ class swooleServer
         file_put_contents(self::$sw_manager_pid_file, $server->manager_pid,LOCK_EX);
     }
 
+    /**
+     * 链接
+     * @param $serv
+     * @param $fd
+     */
     public function onConnect($serv, $fd){
         echo "[" . date("Y-m-d H:i:s") . "] " . "Client:Connect.\n";
         echo "[" . date("Y-m-d H:i:s") . "] " . "master_pid : " . $serv->master_pid . PHP_EOL;
@@ -165,6 +183,13 @@ class swooleServer
         echo "[" . date("Y-m-d H:i:s") . "] " . "fd : " . $fd . PHP_EOL;
     }
 
+    /**
+     * 接受数据处理
+     * @param $serv
+     * @param $fd
+     * @param $from_id
+     * @param $data
+     */
     public function onReceive($serv, $fd, $from_id, $data){
         $fdinfo = $serv->connection_info($fd,$from_id,true);
 
@@ -180,6 +205,8 @@ class swooleServer
 
         echo $log;
 
+
+
         $newdata = array('d' => $data,'fd' => $fd);
         //投递异步任务
         if(isset($this->sw_config["task_worker_num"])) {
@@ -194,10 +221,23 @@ class swooleServer
         }
     }
 
+    /**
+     * 异步任务处理
+     * @param $serv
+     * @param $task_id
+     * @param $from_id
+     * @param $data
+     */
     public function onTask($serv, $task_id, $from_id, $data){
         echo "[".date('Y-m-d H:i:s')."]\tNew AsyncTask[id=$task_id]".PHP_EOL;
     }
 
+    /**
+     * 结束
+     * @param $serv
+     * @param $task_id
+     * @param $data
+     */
     public function onFinish($serv, $task_id, $data){
         echo "AsyncTask[$task_id] Finish: $data".PHP_EOL;
     }

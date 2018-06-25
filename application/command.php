@@ -14,4 +14,5 @@ return [
     'app\console\tcpStop',
     'app\console\tcpReload',
     'app\console\tcpClient',
+    'app\console\webSocketStart',
 ];
