@@ -9,7 +9,7 @@
 namespace app\console;
 
 
-use app\reward\Core\swooleClient;
+use app\reward\core\swooleClient;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;

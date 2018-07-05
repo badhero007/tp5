@@ -1,8 +1,8 @@
 <?php
 namespace app\console;
 
-use app\reward\Core\newWebSocket;
-use app\reward\Core\webSocket;
+use app\reward\core\newWebSocket;
+use app\reward\core\webSocket;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;

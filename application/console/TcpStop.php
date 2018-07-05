@@ -1,7 +1,7 @@
 <?php
 namespace app\console;
-use app\reward\Core\swooleClient;
-use app\reward\Core\swooleServer;
+use app\reward\core\swooleClient;
+use app\reward\core\swooleServer;
 use think\console\Command;
 use think\console\Input;
 use think\console\Output;
