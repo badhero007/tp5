@@ -10,9 +10,9 @@
 // +----------------------------------------------------------------------
 
 return [
-    'app\console\tcpStart',
-    'app\console\tcpStop',
-    'app\console\tcpReload',
-    'app\console\tcpClient',
-    'app\console\webSocketStart',
+    'app\console\TcpStart',
+    'app\console\TcpStop',
+    'app\console\TcpReload',
+    'app\console\TcpClient',
+    'app\console\WebSocketStart',
 ];
