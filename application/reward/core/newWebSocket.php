@@ -6,7 +6,7 @@
  * Time: 16:01
  */
 
-namespace app\reward\Core;
+namespace app\reward\core;
 
 
 class newWebSocket

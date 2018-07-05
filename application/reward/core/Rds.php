@@ -6,7 +6,7 @@
  * Time: 14:15
  */
 
-namespace app\reward\Core;
+namespace app\reward\core;
 
 
 class Rds

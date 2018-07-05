@@ -6,7 +6,7 @@
  * Time: 16:25
  */
 
-namespace app\reward\Core;
+namespace app\reward\core;
 
 
 class swooleClient

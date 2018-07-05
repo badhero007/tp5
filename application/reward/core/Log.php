@@ -6,7 +6,7 @@
  * Time: 11:18
  */
 
-namespace app\reward\Core;
+namespace app\reward\core;
 
 
 class LegoLog

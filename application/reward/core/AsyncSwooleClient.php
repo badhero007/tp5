@@ -6,7 +6,7 @@
  * Time: 15:32
  */
 
-namespace app\reward\Core;
+namespace app\reward\core;
 
 
 class AsyncSwooleClient
