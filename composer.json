@@ -17,7 +17,6 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "topthink/framework": "^5.0",
         "predis/predis": "@stable",
         "phpoffice/phpexcel":"dev-develop",
         "php-amqplib/php-amqplib":"^2.6.1"
