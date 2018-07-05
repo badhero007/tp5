@@ -131,7 +131,6 @@ class Console
             // 读取指令集
             if (is_file(CONF_PATH . 'command' . EXT)) {
                 $commands = include CONF_PATH . 'command' . EXT;
-                var_dump($commands);exit();
                 if (is_array($commands)) {
                     foreach ($commands as $command) {
                         class_exists($command) &&
